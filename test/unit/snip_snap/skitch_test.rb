@@ -24,7 +24,7 @@ module SnipSnap
         
         s.stubs(:response).with().returns(response)
         
-        s.image_url.should == 'http://img.skitch.com/20090830-ejnqt1s9car55ju2sdnfirdsdn.jpg'
+        s.image_url.should == 'http://img.skitch.com/20080924-c2caytj6qcq621h1shfqsxyue3.jpg'
       end
       
     end

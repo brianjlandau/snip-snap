@@ -40,12 +40,12 @@ module SnipSnap
   
   def self.host_map # :nodoc:
     {
-      /^(www\.)?skitch\.com/           => 'Skitch',
-      /img\.ly\/[0-9a-z]+$/i           => 'Imgly',
-      /^twitpic\.com/                  => 'Twitpic',
-      /yfrog\.(com|us)/                => 'Yfrog',
-      /^(flic\.kr|(www\.)?flickr.com)/ => 'Flickr',
-      /^twitgoo\.com/                  => 'Twitgoo'
+      /^(www\.)?skitch\.com\/[^\/]+\/[^\/]+\/[^\/]+/  => 'Skitch',
+      /img\.ly\/\w+$/i                                => 'Imgly',
+      /^twitpic\.com\/\w+$/                           => 'Twitpic',
+      /yfrog\.(com|us)\/\w+(j|p|g)/                   => 'Yfrog',
+      /^(flic\.kr|(www\.)?flickr.com)/                => 'Flickr',
+      /^twitgoo\.com\/\w+$/                           => 'Twitgoo'
     }
   end
 
