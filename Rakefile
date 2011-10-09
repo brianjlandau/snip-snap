@@ -19,6 +19,8 @@ spec = Gem::Specification.new do |s|
   
   s.add_dependency('curb', '>= 0.5.1.0')
   s.add_dependency('fleakr', '>= 0.5.1')
+  s.add_dependency('hpricot', '~> 0.8.4')
+  s.add_dependency('multi_json', '~> 1.0')
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|

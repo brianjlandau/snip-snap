@@ -35,6 +35,7 @@ class SnipSnapTest < Test::Unit::TestCase
     should_know_the_class_name_for 'http://www.flickr.com/photos/viget/3852378037/' => 'Flickr'
     should_know_the_class_name_for 'http://twitgoo.com/2r5hv'                       => 'Twitgoo'
     should_know_the_class_name_for 'http://example.com/image.jpg'                   => 'Image'
+    should_know_the_class_name_for 'http://instagr.am/p/PPDkS/'                     => 'Instagram'
     
     should_know_the_class_name_for 'http://www.flickr.com/photos/viget/3852378037/in/set-72157621982815973/' => 'Flickr'
 
@@ -47,6 +48,7 @@ class SnipSnapTest < Test::Unit::TestCase
     should_create_an_instance_for 'http://www.flickr.com/photos/viget/3852378037/' => 'Flickr'
     should_create_an_instance_for 'http://twitgoo.com/2r5hv'                       => 'Twitgoo'
     should_create_an_instance_for 'http://example.com/image.jpg'                   => 'Image'
+    should_create_an_instance_for 'http://instagr.am/p/PPDkS/'                     => 'Instagram'
 
     should_create_an_instance_for 'http://www.flickr.com/photos/viget/3852378037/in/set-72157621982815973/' => 'Flickr'
 

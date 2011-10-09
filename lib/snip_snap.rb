@@ -3,6 +3,8 @@ $:.unshift File.dirname(__FILE__)
 require 'curb'
 require 'fleakr'
 require 'uri'
+require 'hpricot'
+require 'multi_json'
 
 require 'snip_snap/client'
 
@@ -13,6 +15,7 @@ require 'snip_snap/twitpic'
 require 'snip_snap/flickr'
 require 'snip_snap/twitgoo'
 require 'snip_snap/image'
+require 'snip_snap/instagram'
 
 # = SnipSnap
 #
@@ -45,7 +48,8 @@ module SnipSnap
       /^twitpic\.com\/\w+$/                           => 'Twitpic',
       /yfrog\.(com|us)\/\w+(j|p|g)/                   => 'Yfrog',
       /^(flic\.kr|(www\.)?flickr.com)/                => 'Flickr',
-      /^twitgoo\.com\/\w+$/                           => 'Twitgoo'
+      /^twitgoo\.com\/\w+$/                           => 'Twitgoo',
+      /instagr.am\/p\/\w+/                            => 'Instagram'
     }
   end
 
