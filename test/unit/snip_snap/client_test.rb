@@ -9,6 +9,12 @@ class ClientGetImplementation
   request_method :get
 end
 
+class ClientHeadersImplementation
+  include SnipSnap::Client
+  request_method :get
+  set_headers 'Accept' => 'application/json'
+end
+
 class ClientHeadImplementation
   include SnipSnap::Client
   request_method :head
@@ -35,6 +41,30 @@ module SnipSnap
         c.expects(:fetch).once.with().returns(response)
         
         2.times { c.response }
+      end
+      
+      should 'return nil for headers' do
+        assert_nil ClientImplementation.headers
+      end
+      
+      should 'never set headers on the curl object' do
+        url = 'http://example.com'
+        
+        client = mock() do |c|
+          c.expects(:perform).with()
+        end
+        
+        config = mock() do |c|
+          c.expects(:follow_location=).with(true)
+          c.expects(:max_redirects=).with(5)
+          c.expects(:head=).with(false)
+          c.expects(:headers).never
+        end
+        
+        Curl::Easy.expects(:new).with(url).yields(config).returns(client)
+        
+        c = ClientImplementation.new(url)
+        c.fetch.should == client
       end
       
     end
@@ -70,11 +100,45 @@ module SnipSnap
       
     end
     
+    context "The ClientHeadersImplementation class" do
+      
+      should "know what it's headers are" do
+        ClientHeadersImplementation.headers.should == {'Accept' => 'application/json'}
+      end
+      
+    end
+    
+    context "An Instance of the ClientHeadersImplementation class" do
+      
+      should "know what it's headers are" do
+        ClientHeadersImplementation.headers.should == {'Accept' => 'application/json'}
+      end
+      
+    end
     
     context "The ClientHeadImplementation class" do
 
-      should "know that it doesn't makes a head request" do
-        ClientHeadImplementation.head?.should be(true)
+      should "fetch a response using and add headers" do
+        url = 'http://example.com'
+        
+        client = mock() do |c|
+          c.expects(:perform).with()
+        end
+        headers = mock() do |c|
+          c.expects(:[]=).with('Accept', 'application/json')
+        end
+        
+        config = mock() do |c|
+          c.expects(:follow_location=).with(true)
+          c.expects(:max_redirects=).with(5)
+          c.expects(:head=).with(false)
+          c.expects(:headers).returns(headers)
+        end
+        
+        Curl::Easy.expects(:new).with(url).yields(config).returns(client)
+        
+        c = ClientHeadersImplementation.new(url)
+        c.fetch.should == client
       end
       
     end

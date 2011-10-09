@@ -16,6 +16,7 @@ require 'snip_snap/flickr'
 require 'snip_snap/twitgoo'
 require 'snip_snap/image'
 require 'snip_snap/instagram'
+require 'snip_snap/cloud_app'
 
 # = SnipSnap
 #
@@ -49,7 +50,8 @@ module SnipSnap
       /yfrog\.(com|us)\/\w+(j|p|g)/                   => 'Yfrog',
       /^(flic\.kr|(www\.)?flickr.com)/                => 'Flickr',
       /^twitgoo\.com\/\w+$/                           => 'Twitgoo',
-      /instagr.am\/p\/\w+/                            => 'Instagram'
+      /instagr.am\/p\/\w+/                            => 'Instagram',
+      /cl\.ly\/\w+/                                   => 'CloudApp'
     }
   end
 

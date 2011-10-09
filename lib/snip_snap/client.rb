@@ -18,6 +18,11 @@ module SnipSnap
           config.follow_location = true
           config.max_redirects   = 5
           config.head            = self.class.head?
+          if self.class.headers
+            self.class.headers.each do |header, value|
+              config.headers[header] = value
+            end
+          end
         end
 
         client.perform
@@ -39,6 +44,14 @@ module SnipSnap
       
       def head?
         @request_method == :head
+      end
+      
+      def set_headers(headers)
+        @headers = headers
+      end
+      
+      def headers
+        @headers
       end
       
     end
