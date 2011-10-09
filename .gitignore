@@ -2,3 +2,4 @@
 /doc/
 /coverage/
 /test/flickr_api_key
+.rvmrc
