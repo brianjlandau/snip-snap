@@ -6,7 +6,6 @@ module SnipSnap
     context "An instance of the Yfrog class" do
       setup do
         @url          = 'http://yfrog.com/ahb97j'
-        @expanded_url = 'http://yfrog.com/api/xmlInfo?path=ahb97j'
       end
 
       should "know that it is an image" do

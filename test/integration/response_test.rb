@@ -21,17 +21,12 @@ class ResponseTest < Test::Unit::TestCase
     
     should "be able to find an image in a shortened Yfrog URL" do
       client = SnipSnap.from_url('http://yfrog.com/ahb97j')
-      client.image_url.should == 'http://img377.yfrog.com/img377/9665/b97.jpg'
+      client.image_url.should == 'http://img377.imageshack.us/img377/9665/b97.jpg'
     end
     
     should "be able to find an image in a Yfrog.us URL" do
       client = SnipSnap.from_url('http://yfrog.us/ahb97j')
-      client.image_url.should == 'http://img377.yfrog.com/img377/9665/b97.jpg'
-    end
-    
-    should "be able to find an image in an expanded Yfrog URL" do
-      client = SnipSnap.from_url('http://img377.yfrog.com/i/b97.jpg/')
-      client.image_url.should == 'http://img377.yfrog.com/img377/9665/b97.jpg'
+      client.image_url.should == 'http://img377.imageshack.us/img377/9665/b97.jpg'
     end
     
     should "be able to find an image in a Twitpic URL" do
@@ -61,7 +56,7 @@ class ResponseTest < Test::Unit::TestCase
     
     should "be able to find an image in an img.ly URL" do
       client = SnipSnap.from_url('http://img.ly/3ey')
-      client.image_url.should =~ /http:\/\/img\.ly\/media\/12434\/large_ChillPill13\.jpg/
+      client.image_url.should == 'http://s3.amazonaws.com/imgly_production/12434/large.jpg'
     end
     
     should "be able to find an image in a Twitgoo URL" do
@@ -89,6 +84,20 @@ class ResponseTest < Test::Unit::TestCase
       client.image_url.should == 'http://1.bp.blogspot.com/_PnT6fOkhWyg/Smfa0gGhDzI/AAAAAAAABz8/BAweS5dIBCc/s1600-h/3747620025_21e47ae06f.jpg'
     end
     
+    should "be able to find an image in a Instagram URL" do
+      client = SnipSnap.from_url('http://instagr.am/p/PPDkS/')
+      client.image_url.should == 'http://distillery.s3.amazonaws.com/media/2011/10/05/c82b2ffc6c3c472db8ece7c6f0531f68_7.jpg'
+    end
+    
+    should "be able to find an image in a CloudApp URL" do
+      client = SnipSnap.from_url('http://cl.ly/043x2D2i1F043Q3d3o3I')
+      client.image_url.should == 'http://f.cl.ly/items/1I3H2n0a2e0x0k2F462l/steve.png'
+    end
+    
+    should "be able to find an image in a CloudApp URL" do
+      client = SnipSnap.from_url('http://cl.ly/0Y2h0e250r0c0M1Y0F2r')
+      client.image_url.should be_nil
+    end
     
   end
   

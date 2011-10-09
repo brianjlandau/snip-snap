@@ -12,7 +12,7 @@ module SnipSnap
     end
     
     def image_url
-      json['remote_url']
+      json['remote_url'] if image?
     end
 
     def json

@@ -19,6 +19,12 @@ module SnipSnap
         stub_response_with_fixture(c, 'cloud_app_not_image.json')
         c.should_not be_image
       end
+      
+      should "return nil for image url in the cloud resource isn't an image" do
+        c = SnipSnap::CloudApp.new('http://cl.ly/0Y2h0e250r0c0M1Y0F2r')
+        stub_response_with_fixture(c, 'cloud_app_not_image.json')
+        c.image_url.should be_nil
+      end
 
       should "be able to return an image url for a given url" do
         c = SnipSnap::CloudApp.new(@url)
