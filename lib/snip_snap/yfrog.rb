@@ -12,7 +12,7 @@ module SnipSnap
     
     def image_url
       body = response.body_str
-      Hpricot(body).search('image_link').first.inner_html
+      Hpricot(body).search('image_link').inner_html
     end
     
   end
