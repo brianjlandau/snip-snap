@@ -19,10 +19,7 @@ module SnipSnap
       should "be able to return an image url for a given url" do
         s = SnipSnap::Skitch.new(@url)
         
-        response = stub()
-        response.stubs(:body_str).with().returns(read_fixture('skitch.html'))
-        
-        s.stubs(:response).with().returns(response)
+        s.stubs(:response).with().returns(read_fixture('skitch.json'))
         
         s.image_url.should == 'http://img.skitch.com/20080924-c2caytj6qcq621h1shfqsxyue3.jpg'
       end

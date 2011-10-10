@@ -1,10 +1,10 @@
 $:.unshift File.dirname(__FILE__)
 
 require 'curb'
-require 'fleakr'
 require 'uri'
 require 'hpricot'
 require 'multi_json'
+require 'oembed_client'
 
 require 'snip_snap/client'
 
@@ -67,11 +67,6 @@ module SnipSnap
     match = host_map.detect {|k,v| Regexp.new(k) =~ subject }
     
     match.nil? ? 'Image' : match[1]
-  end
-  
-  # Set the Flickr API key for use by the underlying Flickr API library
-  def self.flickr_api_key=(key)
-    Fleakr.api_key = key
   end
   
 end

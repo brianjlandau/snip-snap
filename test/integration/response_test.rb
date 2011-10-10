@@ -7,9 +7,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 # If you *really* want to run this, use `rake integration` - don't complain if it doesn't work.
 #
 
-api_key = File.read(File.dirname(__FILE__) + '/../flickr_api_key').strip
-SnipSnap.flickr_api_key = api_key
-
 class ResponseTest < Test::Unit::TestCase
   
   context "The SnipSnap library" do
@@ -86,7 +83,7 @@ class ResponseTest < Test::Unit::TestCase
     
     should "be able to find an image in a Instagram URL" do
       client = SnipSnap.from_url('http://instagr.am/p/PPDkS/')
-      client.image_url.should == 'http://distillery.s3.amazonaws.com/media/2011/10/05/c82b2ffc6c3c472db8ece7c6f0531f68_7.jpg'
+      client.image_url.should == 'http://distillery.s3.amazonaws.com/media/2011/10/05/c82b2ffc6c3c472db8ece7c6f0531f68_6.jpg'
     end
     
     should "be able to find an image in a CloudApp URL" do
@@ -94,7 +91,7 @@ class ResponseTest < Test::Unit::TestCase
       client.image_url.should == 'http://f.cl.ly/items/1I3H2n0a2e0x0k2F462l/steve.png'
     end
     
-    should "be able to find an image in a CloudApp URL" do
+    should "not return an image url for a CloudApp URL that isn't an image" do
       client = SnipSnap.from_url('http://cl.ly/0Y2h0e250r0c0M1Y0F2r')
       client.image_url.should be_nil
     end

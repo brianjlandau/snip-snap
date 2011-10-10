@@ -1,17 +1,14 @@
 module SnipSnap
-  class Instagram
+  class Instagram < OembedClient
+    base_url 'http://api.instagram.com/oembed'
+    default_options :maxwidth => '520'
     
-    include Client
-
-    request_method :get
-    
-    def url
-      "http://api.instagram.com/oembed?url=#{@url}"
+    def image?
+      true
     end
     
     def image_url
-      body = response.body_str
-      MultiJson.decode(body)['url']
+      embed_url
     end
     
   end

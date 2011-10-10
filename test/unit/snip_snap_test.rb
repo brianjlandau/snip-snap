@@ -53,14 +53,6 @@ class SnipSnapTest < Test::Unit::TestCase
     should_create_an_instance_for 'http://cl.ly/043x2D2i1F043Q3d3o3I'              => 'CloudApp'
 
     should_create_an_instance_for 'http://www.flickr.com/photos/viget/3852378037/in/set-72157621982815973/' => 'Flickr'
-
-    should "be able to set the Flickr API key" do
-      key = 'abc123'
-      
-      Fleakr.expects(:api_key=).with(key)
-      
-      SnipSnap.flickr_api_key = key
-    end
     
   end
 

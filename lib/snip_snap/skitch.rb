@@ -1,13 +1,14 @@
 module SnipSnap
-  class Skitch
-
-    include Client
+  class Skitch < OembedClient
+    base_url 'http://skitch.com/oembed'
+    default_options :maxwidth => '520'
     
-    request_method :get
+    def image?
+      true
+    end
     
     def image_url
-      body = Hpricot(response.body_str)
-      body.search('img#skitch-image').first.attributes['src']
+      embed_url
     end
     
   end

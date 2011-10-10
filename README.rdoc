@@ -9,7 +9,7 @@ Skitch, Twitpic, Flickr, Yfrog, and Twitgoo, Instagram, CloudApp - others are co
 
 == Installation
 
-    sudo gem install snip-snap --source=http://gemcutter.org
+    gem install snip-snap
 
 == Usage
 
